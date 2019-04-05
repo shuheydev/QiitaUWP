@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +28,14 @@ namespace QiitaUWP
             this.InitializeComponent();
 
             WebView_Main.Navigate(new Uri("https://qiita.com/"));
+
+            SystemNavigationManager.GetForCurrentView().BackRequested += (_, args) => {
+                if(WebView_Main.CanGoBack)
+                {
+                    WebView_Main.GoBack();
+                    args.Handled = true;
+                }
+            };
         }
 
         private async void WebView_Main_OnNavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)

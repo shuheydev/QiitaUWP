@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -90,6 +91,8 @@ namespace QiitaUWP
 
                 titleBar.ButtonHoverForegroundColor = Windows.UI.Colors.White;
                 titleBar.ButtonHoverBackgroundColor=Windows.UI.Color.FromArgb(0xff, 0x4d,0xaf,0x03);
+
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             }
         }
 
